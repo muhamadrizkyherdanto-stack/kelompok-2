@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makalah Pendidikan dan Budaya</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            overflow-x: hidden;
+            touch-action: pan-y pinch-zoom;
+            font-family: "Times New Roman", serif;
+            background: radial-gradient(ellipse at top, #f8fbff 0%, #eaf1f7 52%, #dce6ee 100%);
+            color: #253443;
+            margin: 0;
+            padding: 36px 12px;
+            line-height: 1.6;
+        }
+
+        .page {
+            position: relative;
+            isolation: isolate;
+            background: #fff;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 32px;
+            padding: 25mm 30mm;
+            border-top: 5px solid #174a70;
+            box-shadow: 0 12px 34px #263b4d24;
+        }
+
+        .page:not(:first-of-type)::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            right: 0;
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, transparent 49%, #edf4f8 50%);
+            pointer-events: none;
+        }
+
+        .page > h2 {
+            color: #174a70;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #d9e5ee;
+            margin: 0 0 26px;
+            letter-spacing: 0.7px;
+            text-shadow: 0 1px 0 #fff;
+        }
+
+        .cover h1 {
+            color: #174a70;
+            letter-spacing: 1.6px;
+            margin-top: 18px;
+            text-shadow: 0 3px 0 #e4eef5;
+        }
+
+        .cover h2 {
+            color: #315f7e;
+        }
+
+        .cover {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .cover::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: -25mm;
+            left: -30mm;
+            right: -30mm;
+            height: 125mm;
+            background:
+                radial-gradient(circle at 82% 18%, #d3e8f5 0 35px, transparent 36px),
+                radial-gradient(circle at 90% 42%, #e2eff7 0 70px, transparent 71px),
+                linear-gradient(145deg, #e7f2f9, #f8fbfd 72%);
+            border-bottom: 1px solid #d9e7f0;
+        }
+
+        .cover-label {
+            display: inline-block;
+            color: #174a70;
+            background: #ffffffc9;
+            border: 1px solid #cbdfea;
+            border-radius: 999px;
+            padding: 5px 15px;
+            margin: 0 0 12px;
+            font: bold 12px/1.5 Arial, sans-serif;
+            letter-spacing: 1.5px;
+            text-indent: 0;
+        }
+
+        .cover .cover-divider {
+            width: 64px;
+            height: 4px;
+            background: #39769f;
+            border-radius: 5px;
+            margin: 18px auto 22px;
+        }
+
+        .cover .identity {
+            font-size: 18px;
+            text-align: left;
+            border-top: 1px solid #d9e5ee;
+            border-bottom: 1px solid #d9e5ee;
+            padding: 8px 0;
+        }
+
+        .cover .identity td:first-child {
+            font-weight: bold;
+            width: 85px;
+        }
+
+        .cover {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 245mm;
+        }
+
+        .cover h1 {
+            font-size: 29px;
+            line-height: 1.35;
+            margin: 8px 0 14px;
+        }
+
+        .cover h2 {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 470px;
+            margin: 0 auto;
+        }
+
+        .logo-sekolah {
+            display: block;
+            width: 130px;
+            height: 130px;
+            object-fit: contain;
+            margin: 35px auto;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 18px;
+            line-height: 1.4;
+            margin: 0 0 22px;
+        }
+
+        h3 {
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: left;
+            color: #174a70;
+            border-left: 4px solid #39769f;
+            border-radius: 0 7px 7px 0;
+            background: linear-gradient(90deg, #edf5fa, #fff 85%);
+            padding: 8px 12px;
+            margin: 26px 0 12px;
+        }
+
+        p {
+            text-align: justify;
+            text-indent: 1.25cm;
+            margin: 0 0 14px;
+        }
+
+        p, li {
+            transition: font-size 0.2s ease, background-color 0.2s ease;
+        }
+
+        p.text-expanded,
+        li.text-expanded {
+            font-size: 1.15em;
+            font-weight: bold;
+            background-color: #edf5fa;
+            border-radius: 4px;
+        }
+
+        li::marker {
+            color: #39769f;
+            font-weight: bold;
+        }
+
+        .identity tr + tr td {
+            border-top: 1px solid #eef2f5;
+        }
+
+        .no-indent {
+            text-indent: 0;
+        }
+
+        .toc p {
+            text-indent: 0;
+            margin: 0 0 10px;
+        }
+
+        .center {
+            text-align: center;
+            text-indent: 0;
+        }
+
+        .identity {
+            width: 75%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .identity td {
+            padding: 4px 6px;
+            vertical-align: top;
+        }
+
+        ol, ul {
+            text-align: justify;
+            padding-left: 30px;
+            margin: 8px 0 18px;
+        }
+
+        li {
+            padding-left: 3px;
+            margin-bottom: 8px;
+        }
+
+        .signature-space {
+            height: 48px;
+        }
+
+        .signature-space.large {
+            height: 72px;
+        }
+
+        .signature-line {
+            width: 190px;
+            height: 72px;
+            margin: 0 auto 6px;
+            border-bottom: 1px solid #253443;
+        }
+
+        .reference {
+            list-style: none;
+            counter-reset: references;
+            padding-left: 0;
+        }
+
+        .reference li {
+            counter-increment: references;
+            position: relative;
+            margin: 0 0 10px;
+            padding: 10px 14px 10px 48px;
+            border: 1px solid #d9e5ee;
+            border-left: 4px solid #39769f;
+            border-radius: 8px;
+            background: linear-gradient(110deg, #f0f7fb, #fff 75%);
+            box-shadow: 0 3px 10px #174a7010;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .reference li:hover {
+            transform: translateX(3px);
+            box-shadow: 0 6px 16px #174a701a;
+        }
+
+        .reference li::before {
+            content: counter(references, decimal-leading-zero);
+            position: absolute;
+            top: 10px;
+            left: 12px;
+            color: #174a70;
+            font-weight: bold;
+        }
+
+        .bibliography {
+            min-height: 0;
+        }
+
+        .bibliography .reference li {
+            margin-bottom: 6px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+
+        .reference em {
+            color: #174a70;
+            font-weight: bold;
+        }
+
+        @media screen {
+            body {
+                min-height: 100vh;
+            }
+
+            .page {
+                display: block;
+                width: min(1100px, 100%);
+                min-height: 0;
+                margin: 0 auto 24px;
+                padding: 32px 40px;
+            }
+        }
+
+        @media print {
+            .page::before,
+            .cover::before {
+                display: none;
+            }
+
+            .reference li {
+                background: white;
+                border-color: #bbb;
+                border-left-color: #555;
+                border-radius: 0;
+                box-shadow: none;
+                break-inside: avoid;
+            }
+
+            .reference li:hover {
+                transform: none;
+            }
+
+            .reference li::before,
+            .reference em {
+                color: #000;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            body {
+                padding: 8px;
+            }
+
+            .page {
+                width: 100%;
+                min-height: auto;
+                padding: 25px 20px;
+            }
+
+            .cover {
+                min-height: 85vh;
+            }
+
+            .identity {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 25mm 30mm;
+            }
+
+            body {
+                background: white;
+                color: #000;
+                padding: 0;
+                line-height: 1.5;
+            }
+
+            .page {
+                width: auto;
+                min-height: 0;
+                margin: 0;
+                padding: 0;
+                border-top: none;
+                box-shadow: none;
+                page-break-after: always;
+            }
+
+            .page > h2 {
+                color: #000;
+                border-bottom-color: #999;
+            }
+
+            h3 {
+                color: #000;
+                border-left-color: #777;
+            }
+
+            .cover {
+                min-height: 245mm;
+            }
+
+            .page:last-child {
+                page-break-after: auto;
+            }
+
+            h2, h3 {
+                break-after: avoid;
+            }
+
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HALAMAN SAMPUL -->
+<section class="page">
+    <div class="cover">
+        <div>
+            <p class="cover-label">MAKALAH SEKOLAH</p>
+            <h1>
+                PENDIDIKAN<br>
+                DAN BUDAYA
+            </h1>
+            <div class="cover-divider"></div>
+
+            <h2>
+                PERAN PENDIDIKAN DALAM MELESTARIKAN
+                DAN MENGEMBANGKAN BUDAYA
+            </h2>
+
+            <p class="center">
+                Disusun untuk memenuhi tugas mata pelajaran
+            </p>
+
+            <p class="center"><strong>Bahasa Indonesia</strong></p>
+        </div>
+
+        <div>
+            <p class="center no-indent">
+                Disusun oleh:
+            </p>
+
+            <table class="identity">
+                <tr>
+                    <td>Nama 1</td>
+                    <td>: Rizky Herdanto</td>
+                </tr>
+                <tr>
+                    <td>Nama 2</td>
+                    <td>: Angga</td>
+                </tr>
+                <tr>
+                    <td>Nama 3</td>
+                    <td>: Agas</td>
+                </tr>
+                <tr>
+                    <td>Nama 4</td>
+                    <td>: Reza</td>
+                </tr>
+                <tr>
+                    <td>Nama 5</td>
+                    <td>: Arvi</td>
+                </tr>
+                <tr>
+                    <td>Nama 6</td>
+                    <td>: Windi</td>
+                </tr>
+                <tr>
+                    <td>Kelas</td>
+                    <td>: 9E</td>
+                </tr>
+                <tr>
+                    <td>Kelompok</td>
+                    <td>: 2</td>
+                </tr>
+            </table>
+
+            <br>
+
+            <h2>SMP NEGERI 2 SOLOKANJERUK</h2>
+            <h2>KABUPATEN BANDUNG</h2>
+            <h2>2026-2027</h2>
+        </div>
+    </div>
+</section>
+
+<!-- KATA PENGANTAR -->
+<section class="page">
+    <h2>KATA PENGANTAR</h2>
+
+    <p>
+        Puji syukur penulis panjatkan ke hadirat Tuhan Yang Maha Esa
+        atas rahmat dan karunia-Nya sehingga makalah berjudul
+        "Peran Pendidikan dalam Melestarikan dan Mengembangkan Budaya"
+        ini dapat diselesaikan.
+    </p>
+
+    <p>
+        Budaya adalah warisan berharga yang membentuk identitas
+        masyarakat. Agar tetap dikenal dan berkembang, budaya perlu
+        diperkenalkan kepada generasi muda melalui pendidikan,
+        baik di sekolah, keluarga, maupun lingkungan masyarakat.
+    </p>
+
+    <p>
+        Makalah ini mengulas hubungan pendidikan dan budaya,
+        tantangan pelestarian budaya pada era modern, serta berbagai
+        langkah sederhana yang dapat dilakukan dalam kehidupan
+        sehari-hari. Penulis berharap pembahasan ini dapat mendorong
+        pembaca untuk lebih mengenal dan menghargai keberagaman budaya
+        Indonesia.
+    </p>
+
+    <p>
+        Penulis menyadari bahwa makalah ini masih memiliki kekurangan.
+        Kritik dan saran yang membangun sangat diharapkan sebagai
+        bahan perbaikan. Semoga makalah ini bermanfaat dan menambah
+        wawasan bagi para pembaca.
+    </p>
+
+    <div class="signature-space"></div>
+
+    <p class="center">Solokanjeruk, 27/10/2026</p>
+    <p class="center">Penulis</p>
+    <div class="signature-line" aria-label="Tempat tanda tangan"></div>
+    <p class="center">Rizky Herdanto</p>
+</section>
+
+<!-- DAFTAR ISI -->
+<section class="page toc">
+    <h2>DAFTAR ISI</h2>
+
+    <p>KATA PENGANTAR</p>
+    <p>DAFTAR ISI</p>
+
+    <p><strong>BAB I PENDAHULUAN</strong></p>
+    <p>1.1 Latar Belakang</p>
+    <p>1.2 Rumusan Masalah</p>
+    <p>1.3 Tujuan Penulisan</p>
+    <p>1.4 Manfaat Penulisan</p>
+
+    <p><strong>BAB II PEMBAHASAN</strong></p>
+    <p>2.1 Pengertian Pendidikan</p>
+    <p>2.2 Pengertian Budaya</p>
+    <p>2.3 Hubungan Pendidikan dan Budaya</p>
+    <p>2.4 Peran Pendidikan dalam Melestarikan Budaya</p>
+    <p>2.5 Tantangan Pendidikan dan Budaya di Era Modern</p>
+    <p>2.6 Upaya Melestarikan Budaya melalui Pendidikan</p>
+    <p>2.7 Contoh Penerapan dalam Kehidupan Sehari-hari</p>
+
+    <p><strong>BAB III PENUTUP</strong></p>
+    <p>3.1 Kesimpulan</p>
+    <p>3.2 Saran</p>
+
+    <p>DAFTAR PUSTAKA</p>
+</section>
+
+<!-- BAB I -->
+<section class="page">
+    <h2>BAB I<br>PENDAHULUAN</h2>
+
+    <h3>1.1 Latar Belakang</h3>
+
+    <p>
+        Pendidikan dan budaya merupakan dua unsur penting
+        yang saling berkaitan dalam kehidupan manusia.
+        Pendidikan membantu manusia memperoleh pengetahuan,
+        keterampilan, dan nilai-nilai moral, sedangkan budaya
+        mencakup hasil cipta, rasa, dan karsa manusia yang
+        berkembang dalam kehidupan masyarakat.
+    </p>
+
+    <p>
+        Indonesia memiliki keberagaman budaya yang sangat
+        kaya, mulai dari bahasa daerah, tarian tradisional,
+        pakaian adat, musik, kesenian, hingga adat istiadat.
+        Keberagaman tersebut merupakan identitas bangsa yang
+        perlu dijaga dan diwariskan kepada generasi berikutnya.
+    </p>
+
+    <p>
+        Perkembangan teknologi dan globalisasi membawa banyak
+        perubahan dalam kehidupan masyarakat. Perubahan ini
+        memberikan manfaat, tetapi juga dapat menyebabkan
+        generasi muda semakin kurang mengenal budaya daerahnya.
+        Oleh karena itu, pendidikan memiliki peran penting
+        dalam mengenalkan, melestarikan, dan mengembangkan
+        kebudayaan Indonesia.
+    </p>
+
+    <h3>1.2 Rumusan Masalah</h3>
+
+    <ol>
+        <li>Apa yang dimaksud dengan pendidikan?</li>
+        <li>Apa yang dimaksud dengan budaya?</li>
+        <li>Bagaimana hubungan antara pendidikan dan budaya?</li>
+        <li>Bagaimana peran pendidikan dalam melestarikan budaya?</li>
+        <li>Apa saja upaya untuk menjaga budaya di era modern?</li>
+    </ol>
+
+    <h3>1.3 Tujuan Penulisan</h3>
+
+    <ol>
+        <li>Menjelaskan pengertian pendidikan dan budaya.</li>
+        <li>Menjelaskan hubungan antara pendidikan dan budaya.</li>
+        <li>Memahami pentingnya pelestarian budaya Indonesia.</li>
+        <li>Menjelaskan peran sekolah dan keluarga dalam
+            mengenalkan budaya kepada generasi muda.</li>
+        <li>Meningkatkan kesadaran untuk menghargai keberagaman
+            budaya.</li>
+    </ol>
+
+    <h3>1.4 Manfaat Penulisan</h3>
+
+    <p>
+        Makalah ini diharapkan dapat menambah pengetahuan
+        pembaca mengenai pendidikan dan budaya, meningkatkan
+        rasa cinta terhadap budaya Indonesia, serta mendorong
+        siswa untuk ikut menjaga warisan budaya dalam kehidupan
+        sehari-hari.
+    </p>
+</section>
+
+<!-- BAB II BAGIAN 1 -->
+<section class="page">
+    <h2>BAB II<br>PEMBAHASAN</h2>
+
+    <h3>2.1 Pengertian Pendidikan</h3>
+
+    <p>
+        Pendidikan merupakan usaha sadar dan terencana untuk
+        mewujudkan proses belajar yang membantu peserta didik
+        mengembangkan potensi dirinya. Pendidikan berlangsung
+        melalui jalur formal, nonformal, dan informal, termasuk
+        di sekolah, keluarga, serta lingkungan masyarakat
+        (Republik Indonesia, 2003).
+    </p>
+
+    <p>
+        Pendidikan tidak hanya berfokus pada kemampuan
+        akademik, seperti membaca, menulis, dan berhitung,
+        tetapi juga membentuk karakter, kedisiplinan,
+        tanggung jawab, serta sikap menghormati orang lain.
+    </p>
+
+    <p>
+        Melalui pendidikan, seseorang dapat memahami nilai-nilai
+        kehidupan dan mempersiapkan diri untuk berpartisipasi
+        dalam masyarakat. Pendidikan juga membantu generasi
+        muda mengenal sejarah dan identitas bangsanya.
+    </p>
+
+    <h3>2.2 Pengertian Budaya</h3>
+
+    <p>
+        Kebudayaan mencakup hal-hal yang berkaitan dengan
+        cipta, rasa, karsa, dan hasil karya masyarakat.
+        Kebudayaan berkembang melalui proses belajar dan
+        interaksi antarmanusia, lalu diwariskan dari satu
+        generasi ke generasi berikutnya (Koentjaraningrat,
+        2009; Republik Indonesia, 2017).
+    </p>
+
+    <p>
+        Budaya Indonesia sangat beragam karena masyarakatnya
+        memiliki latar belakang suku, bahasa, adat istiadat,
+        dan tradisi yang berbeda-beda. Contohnya adalah
+        angklung dari Jawa Barat, batik dari berbagai daerah,
+        Tari Saman dari Aceh, dan wayang dari tradisi Jawa.
+    </p>
+
+    <p>
+        Keberagaman budaya merupakan kekayaan bangsa yang
+        harus dihargai. Setiap masyarakat memiliki peran
+        dalam menjaga budaya agar tidak hilang akibat
+        perubahan zaman.
+    </p>
+
+    <h3>2.3 Hubungan Pendidikan dan Budaya</h3>
+
+    <p>
+        Pendidikan dan budaya memiliki hubungan yang erat.
+        Pendidikan menjadi sarana untuk mewariskan budaya
+        dari generasi sebelumnya kepada generasi berikutnya.
+        Sebaliknya, budaya juga memengaruhi nilai, kebiasaan,
+        dan cara belajar dalam lingkungan pendidikan.
+    </p>
+
+    <p>
+        Melalui pembelajaran sejarah, seni budaya, bahasa
+        daerah, dan kegiatan sekolah, siswa dapat mengenal
+        identitas budaya bangsa. Pendidikan juga mengajarkan
+        siswa agar menghormati perbedaan dan hidup berdampingan
+        secara damai.
+    </p>
+
+    <p>
+        Hubungan tersebut menunjukkan bahwa pendidikan bukan
+        hanya bertujuan meningkatkan kecerdasan, tetapi juga
+        membantu menjaga nilai-nilai budaya yang baik.
+    </p>
+</section>
+
+<!-- BAB II BAGIAN 2 -->
+<section class="page">
+    <h3>2.4 Peran Pendidikan dalam Melestarikan Budaya</h3>
+
+    <p>
+        Pendidikan memiliki beberapa peran penting dalam
+        menjaga keberlangsungan budaya, di antaranya:
+    </p>
+
+    <ol>
+        <li>
+            <strong>Mengenalkan budaya daerah.</strong>
+            Sekolah dapat mengenalkan bahasa daerah, pakaian
+            adat, rumah tradisional, tarian, dan kesenian
+            melalui kegiatan pembelajaran.
+        </li>
+        <li>
+            <strong>Menanamkan rasa cinta terhadap budaya.</strong>
+            Siswa diajak memahami bahwa budaya merupakan
+            identitas bangsa yang perlu dihargai dan dijaga.
+        </li>
+        <li>
+            <strong>Membentuk karakter.</strong>
+            Nilai budaya yang baik, seperti gotong royong,
+            sopan santun, dan saling menghormati, dapat
+            diterapkan dalam kehidupan sehari-hari.
+        </li>
+        <li>
+            <strong>Mendorong kreativitas.</strong>
+            Siswa dapat mengembangkan kesenian tradisional
+            melalui pertunjukan, kerajinan, atau karya
+            kreatif tanpa menghilangkan nilai dasarnya.
+        </li>
+        <li>
+            <strong>Menghargai keberagaman.</strong>
+            Pendidikan mengajarkan bahwa perbedaan budaya
+            bukan alasan untuk merendahkan orang lain,
+            melainkan kekayaan yang perlu dihormati.
+        </li>
+    </ol>
+
+    <h3>2.5 Tantangan Pendidikan dan Budaya di Era Modern</h3>
+
+    <p>
+        Pada era modern, perkembangan teknologi dan globalisasi
+        memengaruhi cara masyarakat berkomunikasi, belajar,
+        dan menikmati hiburan. Berbagai budaya dari negara
+        lain dapat dikenal dengan mudah melalui internet.
+    </p>
+
+    <p>
+        Salah satu tantangannya adalah berkurangnya minat
+        sebagian generasi muda untuk mempelajari bahasa,
+        kesenian, dan tradisi daerah. Selain itu, informasi
+        digital yang tidak akurat dapat menimbulkan
+        kesalahpahaman mengenai suatu budaya.
+    </p>
+
+    <p>
+        Meskipun demikian, teknologi juga dapat dimanfaatkan
+        untuk mendokumentasikan kesenian, mempromosikan
+        kerajinan lokal, dan menyebarkan pengetahuan mengenai
+        kebudayaan Indonesia. Karena itu, teknologi perlu
+        digunakan secara bijak dan bertanggung jawab.
+    </p>
+
+    <h3>2.6 Upaya Melestarikan Budaya melalui Pendidikan</h3>
+
+    <p>
+        Pelestarian budaya dapat dilakukan melalui kerja sama
+        antara sekolah, keluarga, masyarakat, dan pemerintah.
+        Beberapa upaya yang dapat dilakukan adalah:
+    </p>
+
+    <ul>
+        <li>Mempelajari sejarah dan kesenian daerah.</li>
+        <li>Menggunakan bahasa daerah sesuai situasi yang tepat.</li>
+        <li>Mengikuti kegiatan seni dan budaya di sekolah.</li>
+        <li>Mengunjungi museum dan tempat bersejarah.</li>
+        <li>Menghormati adat istiadat masyarakat lain.</li>
+        <li>Mendokumentasikan budaya melalui media digital.</li>
+        <li>Mendukung karya seniman dan pengrajin lokal.</li>
+        <li>Menerapkan nilai gotong royong dan sopan santun.</li>
+    </ul>
+</section>
+
+<!-- BAB II BAGIAN 3 -->
+<section class="page">
+    <h3>2.7 Contoh Penerapan dalam Kehidupan Sehari-hari</h3>
+
+    <p>
+        Pendidikan dan budaya dapat diterapkan melalui
+        tindakan sederhana di rumah, sekolah, dan masyarakat.
+        Contoh penerapannya antara lain sebagai berikut.
+    </p>
+
+    <p class="no-indent">
+        <strong>a. Di lingkungan sekolah</strong>
+    </p>
+
+    <p>
+        Siswa mengikuti kegiatan seni tradisional, mempelajari
+        lagu daerah, menggunakan pakaian adat pada kegiatan
+        tertentu, serta menghormati teman yang memiliki
+        kebiasaan dan latar belakang budaya berbeda.
+    </p>
+
+    <p class="no-indent">
+        <strong>b. Di lingkungan keluarga</strong>
+    </p>
+
+    <p>
+        Orang tua mengenalkan cerita rakyat, bahasa daerah,
+        makanan tradisional, dan kebiasaan baik kepada anak.
+        Anggota keluarga juga dapat berdiskusi mengenai
+        tradisi yang masih dijalankan oleh keluarga mereka.
+    </p>
+
+    <p class="no-indent">
+        <strong>c. Di lingkungan masyarakat</strong>
+    </p>
+
+    <p>
+        Masyarakat dapat berpartisipasi dalam kegiatan
+        gotong royong, festival budaya, pertunjukan seni,
+        dan kegiatan pelestarian tempat bersejarah.
+        Kegiatan tersebut mempererat hubungan sosial
+        sekaligus menjaga tradisi.
+    </p>
+
+    <p class="no-indent">
+        <strong>d. Melalui teknologi digital</strong>
+    </p>
+
+    <p>
+        Generasi muda dapat membuat video edukasi tentang
+        tarian daerah, memperkenalkan makanan tradisional,
+        atau membagikan informasi sejarah melalui media
+        sosial. Informasi harus diperiksa kebenarannya dan
+        disampaikan dengan menghormati masyarakat pemilik
+        budaya tersebut.
+    </p>
+
+    <p>
+        Dari berbagai contoh tersebut, dapat diketahui bahwa
+        pelestarian budaya bukan hanya tanggung jawab
+        pemerintah atau orang yang ahli dalam bidang seni.
+        Setiap orang dapat ikut berperan melalui tindakan
+        sederhana yang dilakukan secara konsisten.
+    </p>
+</section>
+
+<!-- BAB III -->
+<section class="page">
+    <h2>BAB III<br>PENUTUP</h2>
+
+    <h3>3.1 Kesimpulan</h3>
+
+    <p>
+        Pendidikan dan budaya merupakan dua unsur yang
+        saling berhubungan dan memiliki peran penting dalam
+        membentuk kehidupan masyarakat. Pendidikan membantu
+        mengembangkan pengetahuan, keterampilan, dan karakter,
+        sedangkan budaya menjadi identitas serta warisan
+        yang mencerminkan kehidupan suatu masyarakat.
+    </p>
+
+    <p>
+        Pendidikan berperan dalam mengenalkan, mewariskan,
+        dan mengembangkan budaya kepada generasi muda.
+        Melalui pembelajaran di sekolah, pendidikan keluarga,
+        kegiatan masyarakat, serta pemanfaatan teknologi,
+        kebudayaan Indonesia dapat terus dikenal dan
+        dilestarikan.
+    </p>
+
+    <p>
+        Oleh sebab itu, seluruh lapisan masyarakat perlu
+        bekerja sama dalam menjaga budaya. Kemajuan zaman
+        harus dimanfaatkan untuk mengembangkan pengetahuan
+        dan kreativitas tanpa melupakan nilai-nilai budaya
+        yang baik.
+    </p>
+
+    <h3>3.2 Saran</h3>
+
+    <p>
+        Siswa hendaknya lebih aktif mempelajari budaya
+        Indonesia dan menerapkan nilai-nilai positif dalam
+        kehidupan sehari-hari. Sekolah diharapkan memberikan
+        kesempatan kepada siswa untuk mengenal budaya melalui
+        pembelajaran dan kegiatan ekstrakurikuler.
+    </p>
+
+    <p>
+        Orang tua dan masyarakat juga diharapkan ikut
+        mengenalkan tradisi serta memberikan contoh perilaku
+        yang baik. Selain itu, teknologi sebaiknya digunakan
+        untuk menyebarkan informasi budaya yang benar,
+        menarik, dan bermanfaat bagi generasi berikutnya.
+    </p>
+</section>
+
+<!-- DAFTAR PUSTAKA -->
+<section class="page bibliography">
+    <h2>DAFTAR PUSTAKA</h2>
+
+    <ol class="reference">
+        <li>
+            Koentjaraningrat. 2009.
+            <em>Pengantar Ilmu Antropologi.</em>
+            Jakarta: Rineka Cipta.
+        </li>
+
+        <li>
+            Republik Indonesia. 2003.
+            <em>Undang-Undang Republik Indonesia Nomor 20
+            Tahun 2003 tentang Sistem Pendidikan Nasional.</em>
+            Jakarta.
+        </li>
+
+        <li>
+            Republik Indonesia. 2017.
+            <em>Undang-Undang Republik Indonesia Nomor 5
+            Tahun 2017 tentang Pemajuan Kebudayaan.</em>
+            Jakarta.
+        </li>
+    </ol>
+</section>
+
+<script>
+    let expandedText = null;
+
+    document.addEventListener("click", (event) => {
+        const clickedText = event.target.closest("p, li");
+        if (!clickedText) return;
+
+        if (expandedText && expandedText !== clickedText) {
+            expandedText.classList.remove("text-expanded");
+        }
+
+        if (clickedText === expandedText) {
+            clickedText.classList.remove("text-expanded");
+            expandedText = null;
+        } else {
+            clickedText.classList.add("text-expanded");
+            expandedText = clickedText;
+        }
+    });
+</script>
+
+</body>
+</html>
